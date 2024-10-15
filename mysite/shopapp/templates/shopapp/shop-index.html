@@ -1,14 +1,20 @@
-<!DOCTYPE html>
+{% extends 'shopapp/base.html' %}
+{% block title %}
+  Shopapp title blok
+{% endblock %}
 
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <title>Shop index</title>
-  </head>
-  <body>
-    <h1>Templates shop</h1>
-    <div>
-      <h2>{{ time_running }}</h2>
-    </div>
-  </body>
-</html>
+{% block body %}
+  Shop from body blok<div>
+    <ul>
+      {% for product, price in products %}
+        <li>{{ product }} for ${{ price }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div>
+    {% now 'H:i' %}
+  </div>
+  <div>
+    {% now 'l' as current_weekday %}Today is:{{ current_weekday }}
+  </div>
+{% endblock %}
